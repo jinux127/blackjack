@@ -5,7 +5,7 @@ const List = ({ list }) => {
       <h2>할일이 {list.length}개 있어요!!</h2>
       <div>
         {list.map((item) => (
-          <div className="List_data">
+          <div className="List_data" key={item.id}>
             <div>{item.content}</div>
             <div>{new Date(item.created_date).toLocaleString()}</div>
           </div>
