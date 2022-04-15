@@ -1,10 +1,11 @@
 import { useState } from "react";
 
-const Todo = () => {
+const Todo = ({ onCreate }) => {
   const [content, setContent] = useState("");
 
   const handleSubmit = () => {
-    console.log(content);
+    onCreate(content);
+    setContent("");
   };
   return (
     <section className="Todo">
