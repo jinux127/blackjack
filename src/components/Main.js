@@ -1,7 +1,9 @@
+import Todo from "./Todo";
+
 const Main = () => {
   return (
     <section className="Main">
-      <div>메인</div>
+      <Todo />
     </section>
   );
 };

@@ -1,10 +1,23 @@
 .App {
   background-color: black;
 }
+#root {
+  display: flex;
+
+  /* align-items: center; */
+  /* justify-content: center; */
+}
 .Container {
   margin: 20px;
   padding: 20px;
   border: 1px solid rgb(85, 78, 78);
+  height: 500px;
+  display: flex;
+  /* justify-content: center; */
+  /* align-items: center; */
+  flex-direction: row;
+  flex-wrap: nowrap;
+  flex: 1;
 }
 
 .Header,
@@ -13,4 +26,19 @@
   padding: 10px;
   margin: 5px;
   border: 1px solid rgb(85, 78, 78);
+  align-items: center;
+  justify-content: center;
+  /* flex-direction: row; */
+}
+.Header {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Main {
+  flex: 9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
