@@ -15,4 +15,8 @@ const List = ({ list }) => {
   );
 };
 
+List.defaultProps = {
+  list: [],
+};
+
 export default List;

@@ -4,6 +4,7 @@ const Todo = ({ onCreate }) => {
   const [content, setContent] = useState("");
 
   const handleSubmit = () => {
+    if (!content.length) return;
     onCreate(content);
     setContent("");
   };
@@ -14,6 +15,7 @@ const Todo = ({ onCreate }) => {
         <input
           name="content"
           value={content}
+          onKeyDown={(e) => (e.key === "Enter" ? handleSubmit() : null)}
           onChange={(e) => {
             setContent(e.target.value);
           }}
