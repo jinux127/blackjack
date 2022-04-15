@@ -1,11 +1,16 @@
-.App{
+.App {
   background-color: black;
 }
-
-h2{
-  color:red;
+.Container {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid rgb(85, 78, 78);
 }
 
-footer{
-  color: green;
+.Header,
+.Main,
+.Footer {
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid rgb(85, 78, 78);
 }

@@ -1,19 +1,18 @@
-import Counter from './Counter';
-// import './App.css';
+import Container from "./components/Container";
+import Main from "./components/Main";
+import MyHeader from "./components/Header";
+import "./App.css";
+import Footer from "./components/Footer";
 
 function App() {
-
-  const counterProps = {
-    a: 1,
-    b: 2,
-    c: 3,
-    d: 4,
-    e: 5,
-  }
   return (
-    <div className="App">
-      <Counter {...counterProps} />      
-    </div>
+    <Container>
+      <div>
+        <MyHeader />
+        <Main />
+        <Footer />
+      </div>
+    </Container>
   );
 }
 
