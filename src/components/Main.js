@@ -18,10 +18,15 @@ const Main = () => {
     setData([newItem, ...data]);
   };
 
+  const onRemove = (targetId) => {
+    const newContentList = data.filter((item) => item.id !== targetId);
+    setData(newContentList);
+  };
+
   return (
     <section className="Main">
       <Todo onCreate={onCreate} />
-      <List list={data} />
+      <List onRemove={onRemove} list={data} />
     </section>
   );
 };

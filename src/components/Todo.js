@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 const Todo = ({ onCreate }) => {
   const [content, setContent] = useState("");
+  const contentInput = useRef();
 
   const handleSubmit = () => {
-    if (!content.length) return;
+    if (!content.length) {
+      contentInput.current.focus();
+      return;
+    }
     onCreate(content);
     setContent("");
   };
@@ -13,9 +17,12 @@ const Todo = ({ onCreate }) => {
       <h1>오늘은 뭘 할까?</h1>
       <div>
         <input
+          ref={contentInput}
           name="content"
           value={content}
-          onKeyDown={(e) => (e.key === "Enter" ? handleSubmit() : null)}
+          onKeyDown={(e) =>
+            e.isComposing || e.key === "Enter" ? handleSubmit() : null
+          }
           onChange={(e) => {
             setContent(e.target.value);
           }}
