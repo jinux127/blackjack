@@ -48,9 +48,29 @@ h2 {
   align-items: center;
   flex-direction: column;
 }
-.List ol {
-  padding: 0;
-}
+
 .List_data {
   margin: 10px;
+}
+
+.Todo {
+  margin: 10px;
+}
+.List {
+  margin: 10px;
+  text-align: center;
+  width: 80%;
+}
+.content {
+  font-weight: bold;
+  border-bottom: solid 1px;
+  padding: 10px;
+  margin: 10px;
+}
+.ListItem {
+  background-color: rgb(240, 240, 240);
+  width: 100%;
+}
+.ListButtons button {
+  margin: 5px;
 }

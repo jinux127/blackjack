@@ -1,8 +1,8 @@
 import { useRef } from "react";
+import ListItem from "./ListItem";
 
-const List = ({ onRemove, list }) => {
+const List = ({ onRemove, onEdit, list }) => {
   const contentInput = useRef();
-  const handlequitEdit = () => {};
 
   return (
     <section className="List">
@@ -10,18 +10,12 @@ const List = ({ onRemove, list }) => {
       <h2>할일이 {list.length}개 있어요!!</h2>
       <div>
         {list.map((item) => (
-          <div className="List_data" key={item.id}>
-            <div>{item.content}</div>
-            <div>{new Date(item.created_date).toLocaleString()}</div>
-            <button>수정</button>
-            <button
-              onClick={() => {
-                onRemove(item.id);
-              }}
-            >
-              삭제
-            </button>
-          </div>
+          <ListItem
+            onRemove={onRemove}
+            onEdit={onEdit}
+            key={item.id}
+            {...item}
+          />
         ))}
       </div>
     </section>

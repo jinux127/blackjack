@@ -23,10 +23,18 @@ const Main = () => {
     setData(newContentList);
   };
 
+  const onEdit = (targetId, newContent) => {
+    setData(
+      data.map((item) =>
+        item.id === targetId ? { ...item, content: newContent } : item
+      )
+    );
+  };
+
   return (
     <section className="Main">
       <Todo onCreate={onCreate} />
-      <List onRemove={onRemove} list={data} />
+      <List onRemove={onRemove} onEdit={onEdit} list={data} />
     </section>
   );
 };
