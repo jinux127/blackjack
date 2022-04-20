@@ -1,4 +1,20 @@
 import { useRef, useState } from "react";
+import styled from "styled-components";
+
+const StyledListItem = styled.div`
+  background-color: rgb(240, 240, 240);
+  width: 100%;
+  margin: 10px;
+`;
+const StyledListButton = styled.button`
+  margin: 5px;
+`;
+const StyledContent = styled.div`
+  font-weight: bold;
+  border-bottom: solid 1px;
+  padding: 10px;
+  margin: 10px;
+`;
 
 const ListItem = ({ onRemove, onEdit, id, content, created_date }) => {
   const [isEdit, setIsEdit] = useState(false);
@@ -28,8 +44,8 @@ const ListItem = ({ onRemove, onEdit, id, content, created_date }) => {
     toggleIsEdit();
   };
   return (
-    <div className="ListItem">
-      <div className="content">
+    <StyledListItem>
+      <StyledContent>
         {isEdit ? (
           <textarea
             value={localContent}
@@ -39,9 +55,9 @@ const ListItem = ({ onRemove, onEdit, id, content, created_date }) => {
         ) : (
           <span>{content}</span>
         )}
-      </div>
+      </StyledContent>
       <span>{new Date(created_date).toLocaleString()}</span>
-      <div className="ListButtons">
+      <StyledListButton>
         {isEdit ? (
           <>
             <button onClick={handleQuitEdit}>수정취소</button>
@@ -53,8 +69,8 @@ const ListItem = ({ onRemove, onEdit, id, content, created_date }) => {
             <button onClick={handleRemove}>삭제</button>
           </>
         )}
-      </div>
-    </div>
+      </StyledListButton>
+    </StyledListItem>
   );
 };
 
