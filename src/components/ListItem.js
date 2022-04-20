@@ -1,5 +1,7 @@
 import { useRef, useState } from "react";
 import styled from "styled-components";
+import { useRecoilState } from "recoil";
+import DataState from "../state/DataState";
 
 const StyledListItem = styled.div`
   background-color: rgb(240, 240, 240);
@@ -16,9 +18,24 @@ const StyledContent = styled.div`
   margin: 10px;
 `;
 
-const ListItem = ({ onRemove, onEdit, id, content, created_date }) => {
+const ListItem = ({ id, content, created_date }) => {
   const [isEdit, setIsEdit] = useState(false);
   const [localContent, setLocalContent] = useState(content);
+
+  const [data, setData] = useRecoilState(DataState);
+
+  const onRemove = (targetId) => {
+    const newContentList = data.filter((item) => item.id !== targetId);
+    setData(newContentList);
+  };
+
+  const onEdit = (targetId, newContent) => {
+    setData(
+      data.map((item) =>
+        item.id === targetId ? { ...item, content: newContent } : item
+      )
+    );
+  };
 
   const editRef = useRef();
 

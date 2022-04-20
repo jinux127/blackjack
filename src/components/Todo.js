@@ -1,5 +1,7 @@
 import { useRef, useState } from "react";
+import { useRecoilState } from "recoil";
 import styled from "styled-components";
+import { DataState } from "../state/index.js";
 
 const StyledTodo = styled.section`
   margin: 10px;
@@ -8,7 +10,21 @@ const StyledTodo = styled.section`
   }
 `;
 
-const Todo = ({ onCreate }) => {
+const Todo = () => {
+  const [data, setData] = useRecoilState(DataState);
+  const dataId = useRef(0);
+
+  const onCreate = (content) => {
+    const created_date = new Date().getTime();
+    const newItem = {
+      id: dataId.current,
+      content,
+      created_date,
+    };
+    dataId.current += 1;
+    setData([newItem, ...data]);
+  };
+
   const [content, setContent] = useState("");
   const contentInput = useRef();
 

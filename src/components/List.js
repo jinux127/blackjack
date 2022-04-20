@@ -1,6 +1,7 @@
-import { useRef } from "react";
 import ListItem from "./ListItem";
 import styled from "styled-components";
+import { useRecoilState } from "recoil";
+import DataState from "../state/DataState";
 
 const StyledList = styled.section`
   margin: 10px;
@@ -13,15 +14,28 @@ const StyledList = styled.section`
     font-size: 1em;
   }
 `;
-const List = ({ onRemove, onEdit, list }) => {
-  const contentInput = useRef();
+const List = () => {
+  const [data, setData] = useRecoilState(DataState);
+
+  const onRemove = (targetId) => {
+    const newContentList = data.filter((item) => item.id !== targetId);
+    setData(newContentList);
+  };
+
+  const onEdit = (targetId, newContent) => {
+    setData(
+      data.map((item) =>
+        item.id === targetId ? { ...item, content: newContent } : item
+      )
+    );
+  };
 
   return (
     <StyledList>
       <h1>목록</h1>
-      <h2>할일이 {list.length}개 있어요!!</h2>
+      <h2>할일이 {data.length}개 있어요!!</h2>
       <div>
-        {list.map((item) => (
+        {data.map((item) => (
           <ListItem
             onRemove={onRemove}
             onEdit={onEdit}
@@ -34,8 +48,6 @@ const List = ({ onRemove, onEdit, list }) => {
   );
 };
 
-List.defaultProps = {
-  list: [],
-};
+List.defaultProps = {};
 
 export default List;
