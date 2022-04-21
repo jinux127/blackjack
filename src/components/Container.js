@@ -25,7 +25,7 @@ const Container = () => {
     <StyledContainer>
       <Header />
       <Routes>
-        <Route path="/" element={<Main />}></Route>
+        <Route path="" element={<Main />}></Route>
         <Route path="/slidepicture" element={<SlidePicture />}></Route>
       </Routes>
     </StyledContainer>
