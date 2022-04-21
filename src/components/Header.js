@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledHeader = styled.header`
@@ -6,12 +7,21 @@ const StyledHeader = styled.header`
   border: 1px solid rgb(85, 78, 78);
   flex: 1;
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
 `;
 
 const Header = () => {
-  return <StyledHeader>헤더</StyledHeader>;
+  return (
+    <StyledHeader>
+      <h1>헤더</h1>
+      <ul>
+        <Link to="/">메인</Link>
+        <Link to="/slidepicture">슬라이드</Link>
+      </ul>
+    </StyledHeader>
+  );
 };
 
 export default Header;
